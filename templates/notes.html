@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Notes
+{% endblock %}
+
+{% block main %}
+    <!--Table Head-->
+    <table class="table table-borderless" id="notesTable">
+        <thead>
+            <tr>
+                <th class="noborder">Symbol</th>
+                <th class="noborder">Note</th>
+                <th class="noborder">Datetime</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+                {% for item in memosList %}
+                    {% if item.note == 0 %}
+
+                     {% else %}
+            <tr>
+
+
+                <td class="noborder">{{ item.symbol }}</td>
+                <td class="noborder">{{ item.note }}</td>
+                <td class="noborder">{{ item.datetime }}</td>
+                <td class="noborder">
+                    <button type="submit" class="btn btn-primary" onclick="deleteRow(this)">
+                        <i class='fas fa-trash-alt'></i></td>
+
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+        </tbody>
+
+
+    </table>
+<br><br>
+<form action="/addnotes" method="get">
+    <div class="inln">
+            <button class="btn btn-primary" type="submit">Add Note <span><i class='far fa-edit' style='font-size:24px'></i></span></button>
+        </div>
+</form>
+
+<script>
+    function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("notesTable").deleteRow(i);
+}
+
+</script>
+
+
+{% endblock %}

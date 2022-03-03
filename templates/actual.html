@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Actual
+{% endblock %}
+
+{% block main %}
+<br><br>
+<canvas id="pie-chart" width="100" height="70"></canvas>
+<br><br>
+
+<script>
+        new Chart(document.getElementById("pie-chart"), {
+         type: 'pie',
+          data: {
+            labels: {{labels | tojson}},
+            datasets: [{
+              label: "Actual Payments",
+              backgroundColor: {{colors | tojson}},
+            data: {{values | tojson}}
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Personal Finance'
+            }
+          }
+        });
+</script>
+<br><br>
+
+ <!--Table Head-->
+<table class="table table-striped" id="actualPay">
+    <thead class="actualheader">
+        <tr>
+            <th>Month</th>
+            <th>Housing</th>
+            <th>Pension,Insurance</th>
+            <th>Food</th>
+            <th>Medical,Health</th>
+             <th>Transport</th>
+            <th>Debt</th>
+            <th>Utilities</th>
+            <th>Clothing</th>
+            <th>Vacations</th>
+            <th>Unexpected</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in spendingsList %}
+            {% if item.housing == 0 %}
+
+            {% else %}
+        <tr>
+            <td>{{ item.month }}</td>
+            <td>{{ item.housing|usd }}</td>
+            <td>{{ item.pensionIns|usd }}</td>
+            <td>{{ item.food|usd }}</td>
+             <td>{{ item.health|usd }}</td>
+            <td>{{ item.transport|usd }}</td>
+            <td>{{ item.debt|usd }}</td>
+            <td>{{ item.utilities|usd }}</td>
+             <td>{{ item.clothing|usd }}</td>
+            <td>{{ item.vacation|usd }}</td>
+            <td>{{ item.unexpected|usd }}</td>
+            <td>{{ item.total|usd }}</td>
+
+        </tr>
+        {% endif %}
+        {% endfor %}
+        <tr>
+            <td><b>Year 2020 Total</b></td>
+            <td colspan="10"></td>
+            <td><b>{{  grandtotal|usd }}</b></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

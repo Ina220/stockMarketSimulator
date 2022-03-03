@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+<div class="backimgjar">
+
+<div class="ontop">
+    <br><br>
+
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select autofocus class="form-control" name="symbol" id="symbol">
+                <option value="none" class="selectpicker show-tick" selected disabled>Symbol</option>
+                {% for i in saleHoldings %}
+                <option value="{{ i.symbol }}">{{ i.symbol }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="shares" placeholder="Amount" type="number" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+    </div>
+    <div>
+        <br><br>
+    </div>
+{% endblock %}
+

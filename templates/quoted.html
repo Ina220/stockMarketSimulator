@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+
+    <div class="btnHolder">
+        <form action="/addnotes" method="get">
+          <button class="btn btn-outline-primary" style='font-size:20px' type="submit"> <i class='far fa-sticky-note'></i></button>
+        </form>
+    </div>
+    <br><br>
+   <h5> A share of {{ name }} ({{ symbol }}) costs {{ price }}.</h5><br>
+   </div></h4><br>
+    <p>{{ currentDate }}</p>
+   </div>
+   <br><br><br>
+
+<div>
+    <h4>{{ symbol }}  <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+  Profile
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header txtcolor">
+        <h5 class="modal-title txtcolor" id="exampleModalLabel">{{ comName }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body txtcolor">
+        <p>The number of employees in <b>{{ comName }}</b> is <b>{{ employees }}</b>.<br>
+        The market in which securities are bought and sold is <b>{{ exchange }}</b>.<br>
+        This company is in the <b>{{ industry }}</b> industry.<br><br>
+        Short <b>description</b> :<br>
+        {{ description }}.<br><br>
+        The <b>CEO</b> of the company is <b>{{ ceo }}</b>.<br>
+        <b>Type</b> of stock: <b>{{ issueType }}</b>.<br>
+        It is in the <b>{{ sector }}</b>.<br>
+        Company address  :  <b>{{ address }},{{ city }}, {{ state }}, {{ zip }}, {{ country }}</b>.<br>
+        Phone : <b>{{ phone }}</b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<p>See below the {{ symbol }} performance on the market for 1 month <i class="fa fa-area-chart"></i></p><br>
+<br>
+<div><canvas id="myChart" width="600" height="400" style="background-color: #bddbc5;"></canvas></div>
+
+<script>
+        new Chart(document.getElementById("myChart"), {
+         type: 'line',
+          data: {
+            labels: {{labels | tojson}},
+            datasets: [{
+              label: "Month",
+              backgroundColor: {{colors | tojson}},
+            data: {{values | tojson}}
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Stock price Chart'
+            }
+          }
+        });
+</script>
+
+{% endblock %}

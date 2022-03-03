@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Datefilter
+{% endblock %}
+
+{% block main %}
+
+     <form action="/datefilter" method="post" class="form-inline">
+        <div class="form-group">
+            <label for="datestart">From: </label>
+            <input autocomplete="off" autofocus class="form-control input" name="datestart" id="datestart" placeholder="Choose Date" type="date">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="dateend">To: </label>
+            <input class="form-control input" name="dateend" id="dateend" placeholder="Choose Date" type="date" autocomplete="off">
+        </div>
+        <div class="form-group">
+
+            <button class="btn btn-primary" type="submit" id="cal">Submit <i class='far fa-calendar-alt' style='font-size:24px'></i></button>
+        </div>
+    </form>
+    <div><br><br><br>
+    <table class="table table-striped">
+        <thead class="tableheader">
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for stock in history %}
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.shares }}</td>
+                <td>{{ stock.price|usd }}</td>
+                <td>{{ stock.transacted }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+ {% endblock %}

@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Calculated
+{% endblock %}
+
+{% block main %}
+<!-- addnotes button -->
+<div class="btnHolder">
+        <form action="/addnotes" method="get">
+          <button class="btn btn-outline-primary" style='font-size:20px' type="submit"> <i class='far fa-sticky-note'></i></button>
+        </form>
+    </div>
+<br><br>
+<!-- Show barchart for calculated payments -->
+<div><canvas id="myChart" width="400" height="200"></canvas></div>
+<script>
+new Chart(document.getElementById("myChart"), {
+     type: 'bar',
+      data: {
+        labels: {{ labels | tojson }},
+        datasets: [{
+          label: "Estimated Min.Payments",
+          backgroundColor: "#FDB45C",
+        data: {{ valuesMinimum | tojson}}
+        },
+        {
+          label: "Estimated Max.Payments",
+          backgroundColor: "#F7464A",
+        data: {{ valuesMaximum | tojson }}
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Personal Finance Chart'
+        }
+      }
+    });
+</script>
+
+<div>
+  <table class="table table-hover txtfill">
+    <thead class="financeheader">
+      <tr>
+        <th scope="col">Payments</th>
+        <th scope="col">Min.</th>
+        <th scope="col">Max.</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+    <th scope="row">
+      <a href="#" class="hasTooltip">Housing
+        <span>Payment for house/appartment<br>rent or mortgage.</span>
+      </a></th>
+      <td>{{ housingMin|usd }} (25%)</td>
+      <td>{{ housingMax|usd }} (35%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Pension, Insurance
+        <span>Payment premiums for car,home,life..</span>
+      </a></th>
+      <td>{{ piMin|usd }}  (15%)</td>
+      <td>{{ piMax|usd }}  (20%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Groceries, Food
+        <span>Payments in groceries store,<br>farmers market,<br>restaurants.</span>
+      </a></th>
+      <td>{{ foodMin|usd }}  (11%)</td>
+      <td>{{ foodMax|usd }}  (15%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Medical, Health
+        <span>Payments for medical insurance,<br>health programs.</span>
+      </a></th>
+      <td>{{ healthMin|usd }}  (10%)</td>
+      <td>{{ healthMax|usd }}  (12%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Transportation
+        <span>Payments for car maintanence,<br>fuel.</span>
+      </a></th>
+      <td>{{ transportMin|usd }}  (8%)</td>
+      <td>{{ transportMax|usd }}  (12%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Debt
+        <span>Payments for student/personal loans,<br>credit cards.</span>
+      </a></th>
+      <td>{{ debtsMin|usd }}  (15%)</td>
+      <td>{{ debtsMax|usd }}  (20%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Utilities
+        <span>Payments for electricity,cable<br>water,phone.</span>
+      </a></th>
+      <td>{{ utilitiesMin|usd }}  (5%)</td>
+      <td>{{ utilitiesMax|usd }}  (10%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Clothing
+        <span>Payments for clothes,<br>styling.</span>
+      </a></th>
+      <td>{{ clothingMin|usd }}  (3%)</td>
+      <td>{{ clothingMax|usd }}  (7%)</td>
+      </tr>
+      <tr>
+      <th scope="row">
+        <a href="#" class="hasTooltip">Vacationing
+        <span>Payments for travel and vacation,<br>visiting cultural events.</span>
+      </a></th>
+      <td>{{ vacationingMin|usd}}  (5%)</td>
+      <td>{{ vacationingMax|usd }}  (10%)</td>
+      </tr>
+      <tr>
+      <th scope="row">Unexpected Necessities</th>
+      <td>{{ miscMin|usd }}  (5%)</td>
+      <td>{{ miscMax|usd }}  (10%)</td>
+      </tr>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="btnHolder">
+<form action="/calculator" method="get">
+  <button class="btn btn-primary" type="submit">Reset</button>
+</form>
+</div>
+</div>
+
+{% endblock %}

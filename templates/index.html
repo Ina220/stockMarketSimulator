@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <!--Table Head-->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in stocksDict %}
+                {% if item.shares == 0 %}
+
+                {% else %}
+            <tr>
+                <td>{{ item.symbol }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.shares }} <br>
+                    <form action="#" method="POST">
+                        <input type="hidden" name="symbol" value="{{ item.symbol }}">
+                        <input type="text" name="shares" size="5" placeholder="Amount" autocomplete="off">
+                        <input type="submit" value="Buy" formaction="/buy">
+                    </form>
+                    <form action="#" method="POST">
+                        <input type="hidden" name="symbol" value="{{ item.symbol }}">
+                        <input type="text" name="shares" size="5" placeholder="Amount" autocomplete="off">
+                        <input type="submit" value="Sell" formaction="/sell">
+                    </form>
+                </td>
+                <td>{{ item.price|usd }}</td>
+                <td id="total">{{ item.total|usd }}</td>
+            </tr>
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td colspan="3"></td></td>
+                <td id="budget">{{ usersBudget|usd }}</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td id="own"><b>${{ grandTotal }}</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Calculator
+{% endblock %}
+
+{% block main %}
+<div class="backimgcol">
+    <br><br>
+<p class="txtdark"> <br>Personal finances and organizing them it's very important task for successful living.<br>By entering your income amount in the field bellow,<br> you will get an estimated results of how much your spendings should be.</p>
+
+        <div class="ontop">
+
+    <form action="/calculator" method="post">
+        <div class="form-group">
+            <br><br>
+            <p class="txtdark"><strong>Enter your income for a month or year :</strong></p>
+            <input autocomplete="off" autofocus class="form-control" name="income" id="income" placeholder="Amount" type="text">
+        </div>
+
+            <button class="btn btn-primary" type="submit">Calculate</button>
+    </form><br><br><br><br>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Stocks
+{% endblock %}
+
+{% block main %}
+
+<div class="btnHolder">
+    <form action="/addnotes" method="get">
+        <button class="btn btn-outline-primary" style='font-size:20px' type="submit"> <i class='far fa-sticky-note'></i></button>
+    </form>
+</div>
+<br><br>
+<h2>All stocks on the market</h2>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <div>
+            <p><h5>Search for stocks today in the US market from {{ totalStocks }} companies/corporations.</h5><br>
+            <h6>Refers to the common issue type:<br><br>
+                    <ul class="ulstocks">
+                        <li><a href="#" class="hasTooltip"><b>ad</b> - ADR
+                        <span><b>A</b>merican <b>D</b>epository <b>R</b>eceipts(ADRs) offer US investors<br> a mean
+                         to gain investment exposure to non-US stocks<br>
+                         without the complexities of dealing in foreign stock<br>markets.</span>
+                        </a></li>
+                        <li><a href="#" class="hasTooltip"><b>gdr</b> - GDR
+                        <span><b>G</b>lobal <b>D</b>epositary <b>R</b>eceipts (GDRs)
+                           give issuers exposure<br>
+                           to the global markets outside their home market.<br>
+                           GDRs are offered to investors in 2 or more markets and are<br>
+                           most commonly used to raise capital in Europe and in US.<br>
+                        </span>
+                          </a></li>
+                        <li><a href="#" class="hasTooltip"><b>re</b> - REIT
+                         <span>REITs are companies that develop and manage<br>
+                             real estate properties.
+                         </span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>si</b> - Secondary Issue
+                         <span>Issuance of additional shares of a publicly traded<br>
+                              company to the public.Given that the company's <br>
+                              shares already trade in the secondary market, the<br>
+                              underwriters handling the seasoned or secondary <br>
+                              offering price the shares at the prevailing stock<br>
+                              market price on the day of the offering.
+                         </span>
+                          </a></li>
+                       <li><a href="#" class="hasTooltip"><b>ce</b> - Closed end fund
+                        <span>A closed-end fund (CEF) or closed-ended fund is a<br>
+                              collective investment model based on issuing a <br>
+                              fixed number of shares which are not redeemable<br>
+                              from the fund. Unlike open-end funds, new shares<br>
+                              in a closed-end fund are not created by managers<br>
+                              to meet demand from investors.
+                        </span>
+                         </a></li></ul>
+                    <ul class="ulstocks">
+                        <li><a href="#" class="hasTooltip"><b>lp</b> - Limited Partnerships
+                        <span>Master limited partnerships, or MLPs, are a type<br>
+                              of stock market investment that often pays very<br>
+                              attractive distribution yields. Most stocks that<br>
+                              trade on exchanges are shares of corporations. As<br>
+                              the name implies, an MLP is a type of partnership,<br>
+                              and investors buy units of the partnership instead<br>
+                              of shares of stock.
+                        </span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>cs</b> - Common Stock
+                        <span>Common shares represent ownership in a company <br>
+                              and a claim (dividends) on a portion of profits.<br>
+                              Investors get one vote per share to elect the board<br>
+                              members, who oversee the major decisions made <br>
+                              by management.
+                        </span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>et</b> - ETF
+                        <span>An exchange traded fund (ETF) is a type of security<br>
+                              that involves a collection of securities-such as <br>
+                              stocks-that often tracks an underlying index, <br>
+                              although they can invest in any number of industry<br>
+                              sectors or use various strategies.
+                        </span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>wt</b> - Warrant
+                        <span>A stock warrant represents the right to purchase a <br>
+                              company's stock at a specific price and at a specific<br>
+                              date. A stock warrant is issued directly by a company<br>
+                              to an investor. Stock options are purchased when it is<br>
+                              believed the price of a stock will go up or down. ... <br>
+                              A stock warrant represents future capital for a company.
+                        </span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>rt</b> – Right
+                        <span>Rights and warrants can allow current shareholders to purchase<br>
+                              additional shares at a discount and maintain their share<br>
+                              of ownership in the company. However,neither of these<br>
+                              instruments is used much today, as stock and market options<br>
+                               have become much more popular.</span>
+                         </a></li></ul>
+                    <ul class="ulstocks">
+                        <li><a href="#" class="hasTooltip"><b>oef</b> - Open Ended Fund
+                        <span>An open-end fund is a diversified portfolio of <br>
+                              pooled investor money that can issue an unlimited<br>
+                              number of shares. The fund sponsor sells shares <br>
+                              directly to investors and redeems them as well.<br>
+                              These shares are priced daily, based on their <br>
+                              current netasset value (NAV).</span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>cef</b> - Closed Ended Fund
+                        <span>A closed-end fund is a portfolio of pooled assets<br>
+                              that raises a fixed amount of capital through an  <br>
+                              initial public offering(IPO) and then lists shares <br>
+                              for trade on a stock exchange. Like a mutualfund, <br>
+                              a closed-end fund has a professional manager <br>
+                              overseeing the portfolio and actively buying and <br>
+                              selling holding assets.</span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>ps</b> - Preferred Stock
+                        <span>The main difference between preferred and <br>
+                              common stock is that preferred stock gives  <br>
+                              no voting rights to shareholders while <br>
+                              common stock does. Preferred shareholders <br>
+                              have priority over a company's income, <br>
+                              meaning they are paid dividends before <br>
+                              common shareholders.</span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>ut</b> - Unit
+                        <span>A unit in the financial world is a combination<br>
+                              of assets or types of assets packaged together<br>
+                              and sold as one. For example, a shareholder<br>
+                              buying one unit of company stock may get <br>
+                              preferred shares, ordinary shares and even<br>
+                              warrants in the unit.</span>
+                         </a></li>
+                        <li><a href="#" class="hasTooltip"><b>struct</b> - Structured Product
+                        <span>Structured products are pre-packaged investments<br>
+                              that normally include assets linked to interest<br>
+                              plus one or more derivatives. These products may<br>
+                              take traditional securities such as an <br>
+                              investment-grade bond and replace the usual <br>
+                              payment features with non-traditional payoffs.</span>
+                         </a></li></ul></h6>
+            </p>
+        </div><br>
+
+<table id="myTable">
+<thead>
+    <tr class="header">
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Stock Exchange</th>
+        <th>Type</th>
+    </tr>
+</thead>
+
+<tbody>
+    {% for item in stocksData %}
+    <tr>
+        <td>{{ item.symbol }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.stockExchange }}</td>
+        <td>{{ item.sort }}</td>
+    </tr>
+ {% endfor %}
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="/static/test.js"></script>
+        <script src="/static/Chart.min.js"></script>
+
+        <title>{% block title %}Santa Clara County{% endblock %}</title>
+
+
+
+
+    </head>
+
+    <body class="tnx">
+
+
+         <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="black bar">Menu</span></a>
+            <select class="selectCity" onchange="window.location.href=this.value" >
+                <option value="index.html" >Menu</option>
+                <option value="cambridge.html">Cambridge,MA</option>
+                <option value="boston.html">Boston,MA</option>
+                <option value="sanfrancisco.html">San Jose,CA</option>
+            </select>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/quote">Quote</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/buy">Buy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/sell">Sell</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+
+         <!-- Section for 'Date and time' button with background image-->
+        <div id="orderOut" class="mosaic">
+
+            <!-- Section for 'audio control' -->
+
+        </div>
+        <!-- Section with paragraph and a dropdown menu to navigate
+        through all pages -->
+
+        <div>
+        <p class="content coral"><strong>
+            Welcome! This web page is design to help you get inform as a newcomer
+            to overcome integration, adaptation, simply to make the Santa Clara County
+            <select class="selectCity" onchange="window.location.href=this.value" >
+                <option value="index.html" >select</option>
+                <option value="cambridge.html">Cambridge,MA</option>
+                <option value="boston.html">Boston,MA</option>
+                <option value="sanfrancisco.html">San Jose,CA</option>
+            </select> ... your home. </strong>
+        </p>
+        </div>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="small text-center text-muted">
+            Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+        </footer>
+
+    </body>
+
+</html>

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Actual Payments
+{% endblock %}
+
+{% block main %}
+
+    <form action="/addactual" method="post">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="month">Enter Month: </label><br>
+            <input  autofocus class="form-control" oninvalid="alert('You must fill out the form!');" name="month" id="month" placeholder="Month" type="text" required>
+        </div>
+         <div class="form-group col-md-6">
+             <label for="housing">Payment for housing: </label><br>
+            <input autocomplete="off" class="form-control" name="housing" id="housing" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pensionIns">Payment for insurance,pension: </label><br>
+            <input autocomplete="off" class="form-control" name="pensionIns" id="pensionIns" placeholder="Amount" type="text" required>
+        </div>
+         <div class="form-group col-md-6">
+             <label for="food">Payment for food: </label><br>
+            <input autocomplete="off" class="form-control" name="food" id="food" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="health">Payment for medical,health: </label><br>
+            <input autocomplete="off" class="form-control" name="health" id="health" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="transport">Payment for transport: </label><br>
+            <input autocomplete="off" class="form-control" name="transport" id="transport" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="debt">Payment for debt: </label><br>
+            <input autocomplete="off" class="form-control" name="debt" id="debt" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="utilities">Payment for utilities: </label><br>
+            <input autocomplete="off" class="form-control" name="utilities" id="utilities" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="clothing">Payment for clothing: </label><br>
+            <input autocomplete="off" class="form-control" name="clothing" id="clothing" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="vacation">Payment for vacations: </label><br>
+            <input autocomplete="off" class="form-control" name="vacation" id="vacation" placeholder="Amount" type="text" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="unexpected">Unexpected payments: </label><br>
+            <input autocomplete="off" class="form-control" name="unexpected" id="unexpected" placeholder="Amount" type="text" required>
+        </div><br>
+</div>
+            <button class="btn btn-primary" type="submit">Submit <i class='fas fa-calculator' style='font-size:20px'></i></button>
+
+</form>
+
+{% endblock %}
