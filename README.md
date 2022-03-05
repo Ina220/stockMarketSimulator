@@ -49,7 +49,7 @@ _If the user just register and didn't bought any shares the portfolio shows only
 
 ***
 
-* **Stock Quote** is an option where the user can type in the stock symbol and get current stock price as a text, view company profile in a modal window, and stock performance with `<canvas>` element, ***Line Chart***. I made company profile with IEX cloud endpoint `/company` , `GET stable/stock/{symbol}/company`.
+* **Stock Quote** is an option where the user can type in the stock symbol and get current stock price as a text, view company profile in a modal window, and stock performance, ***Line Chart***. I made company profile with IEX cloud endpoint `/company` , `GET stable/stock/{symbol}/company`.
 ```python
 response = requests.get(f"https://cloud-sse.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/company?token={api_key}")
 ``` 
@@ -153,7 +153,7 @@ document.querySelector('#note').onkeyup = function() {
 * **Personal Finance** is a calculator where the user can enter the income amount (by month or year) to get an estimated payments, as it says on the website:
 >_Personal finances and organizing them is very important task for successful living. By entering your income amount in the field bellow, you will get an estimated results of how much your spending should be._
 
-The payments are shown with a table that has hoverable content that displays text with a class "tooltip", and comparable `<canvas>` ***Bar Chart***.
+The payments are shown with a table that has hoverable content that displays text with a class "tooltip", and comparable  ***Bar Chart***.
 <details>
 <summary>View Personal Finance</summary>
 
@@ -162,7 +162,7 @@ The payments are shown with a table that has hoverable content that displays tex
 </details>
 
 ***
-* **Actual Payments** is a montly payments that the user actually has and can keep record of it. With `<submit>` `<form>`.
+* **Actual Payments** is a montly payments that the user actually has and can keep record of it. 
 <details>
 <summary>View Personal Finance</summary>
  
