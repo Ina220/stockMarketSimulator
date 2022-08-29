@@ -8,7 +8,7 @@ On the other hand, users can ***organize their own finances***, with the help of
 ## Table of Contents
 * Register
 
-#### Stock market simulator
+
 * **Homepage** is the portfolio page where user can see how many shares owns, as well ***buy*** and ***sell*** shares from the same page.
 
 |   Symbol    |    Name       |    Shares    |    Price    |    Total    |
@@ -70,7 +70,6 @@ On the other hand, users can ***organize their own finances***, with the help of
 ***
 * **View Notes** to view the entered notes, delete it and save it. _(you can view in **Make Notes**)_. 
 
-### Personal Finance
 
 * **Personal Finance** is a calculator where the user can enter the income amount (by month or year) to get an estimated payments, as it says on the website.
 
