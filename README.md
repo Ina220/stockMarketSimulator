@@ -1,4 +1,4 @@
-### ![logo](phiLogo.jpg)STOCK MARKET SIMULATOR & PERSONAL FINANCE 
+### ![logo](phiLogo.jpg)   STOCK MARKET SIMULATOR & PERSONAL FINANCE 
  ***
  
  
